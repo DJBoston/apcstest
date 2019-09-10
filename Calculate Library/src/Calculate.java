@@ -46,35 +46,42 @@ public class Calculate {
 		return Integer.toString((a*c)+b) + "/"  + Integer.toString(c);
 	}
 	
+	//method to change from a improper fraction to a mixed number
 	public static String toMixedNum(int a, int b) {
 		return Integer.toString(a/b) + "_" + Integer.toString(a%b) + "/"+Integer.toString(b);
 	}
 	
+	//returns whether a int a is divisible by int b
 	public static boolean isDivisibleBy(int a, int b) {
 		return (a%b == 0);
 	}
 	
+	//returns the absolute value of a number
 	public static double absValue(double a) {
 		if (a < 0) { return a*-1; }
 		return a;
 	}
 	
+	//returns the larger of two numbers
 	public static double max(double a, double b) {
 		if (a > b) { return a; }
 		return b;
 	}
 	
+	//returns the largest of three numbers
 	public static double max(double a, double b, double c) {
 		if (a > b && a > c) { return a; }
 		else if (b > a && b > c) { return b; }
 		return c;
 	}
 	
+	//returns the smaller of two numbers
 	public static int min(int a, int b) {
 		if (a < b) { return a; }
 		return b;
 	}
 	
+	//rounds a double to two decimal places
 	public static double round2(double a) {
 		if (Double.toString(a).substring(Double.toString(a).indexOf("."),Double.toString(a).length()).length() > 3) {
 			Double b = Double.valueOf(Double.toString(a).substring(0,Double.toString(a).indexOf(".")+4));
@@ -84,4 +91,31 @@ public class Calculate {
 		
 		return a; //if its already rounded
 	}
+	
+	public static double exponent(double a, int b) {
+		double c = 1;
+		for (int i=0;i<b;i++) {
+			c *= a;
+		}
+		return c;
+	}
+	
+	public static int factorial(int a) {
+		int fact=1;
+		for(int i=1;i<=a;i++){    
+			fact=fact*i;
+		}
+		return fact;
+	}
+	
+	public static boolean isPrime(int a) {
+		for (int i=2;i<a/2;i++) {
+			if (isDivisibleBy(a,i)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
 }

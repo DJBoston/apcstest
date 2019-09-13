@@ -53,6 +53,7 @@ public class Calculate {
 	
 	//returns whether a int a is divisible by int b
 	public static boolean isDivisibleBy(int a, int b) {
+		if (b == 0) { throw new ArithmeticException("Can't divide by 0"); }
 		return (a%b == 0);
 	}
 	
@@ -93,6 +94,7 @@ public class Calculate {
 	}
 	
 	public static double exponent(double a, int b) {
+		if (b < 0) { throw new ArithmeticException("Can't input a negative exponent"); }
 		double c = 1;
 		for (int i=0;i<b;i++) {
 			c *= a;
@@ -101,6 +103,7 @@ public class Calculate {
 	}
 	
 	public static int factorial(int a) {
+		if (a < 0) { throw new ArithmeticException("Can't input a negative number"); }
 		int fact=1;
 		for(int i=1;i<=a;i++){    
 			fact=fact*i;
@@ -116,6 +119,35 @@ public class Calculate {
 		}
 		return true;
 	}
+	
+	
+	public static int gcf(int a, int b) {
+		while(a!=0 && b!=0) {
+			int c = b;
+			b = a%b;
+			a = c;
+		}
+		return a+b;
+	}
+	
+	public static double sqrt(double num) {
+		if (num < 0) { throw new ArithmeticException("Can't input a negative number"); }
+	    if (num == 0 || num == 1) { return num; } //Checks for 0 or 1
+	    int i = 1;
+	    int x = 1; 
+	    while (x <= num) { 
+	      i++; 
+	      x = i * i; 
+	    } 
+	    return round2(i - 1); 
+	}
+	
+	public static String quadForm(int a, int b, int c) {
+		if (discriminant(a,b,c) == -1) { return "no real roots"; }
+		if (discriminant(a,b,c) == 0 ) { return String.valueOf(round2((-b + sqrt((b*b) - 4 * a * c))/(2*a))); }
+		return String.valueOf((-b + sqrt((b*b) - (4 * a * c)))/(2*a)) + " and " + String.valueOf((-b - sqrt((b*b) - (4 * a * c)))/(2*a));
+	}
+	
 	
 	
 }

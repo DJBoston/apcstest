@@ -87,6 +87,7 @@ public class Calculate {
 		if (Double.toString(a).substring(Double.toString(a).indexOf("."),Double.toString(a).length()).length() > 3) {
 			Double b = Double.valueOf(Double.toString(a).substring(0,Double.toString(a).indexOf(".")+4));
 			if (Double.valueOf(String.valueOf(b).substring(String.valueOf(b).length()-1, String.valueOf(b).length())) < 5) { return Double.valueOf(String.valueOf(b).substring(0,String.valueOf(b).length()-1)); }
+			if (Double.valueOf(Double.toString(a).substring(0,Double.toString(a).indexOf(".")+3)) < 0) { return Double.valueOf(Double.toString(a).substring(0,Double.toString(a).indexOf(".")+3))- 0.01; }
 			return Double.valueOf(Double.toString(a).substring(0,Double.toString(a).indexOf(".")+3))+ 0.01;
 		}
 		

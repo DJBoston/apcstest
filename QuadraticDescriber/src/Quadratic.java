@@ -21,7 +21,7 @@ public class Quadratic {
       
     //chekcs for roots
     String roots = quadForm(a, b, c);
-    if (roots.equals("no real roots")) {
+    if (roots == "no real roots") {
          System.out.println("no x intercepts");
       } else {
          System.out.println("x intercepts: " + roots);

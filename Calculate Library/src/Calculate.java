@@ -51,6 +51,10 @@ public class Calculate {
 		return Integer.toString(a/b) + "_" + Integer.toString(a%b) + "/"+Integer.toString(b);
 	}
 	
+	public static String foil(int a, int b, int c, int d, String s) {
+		return ((a*c)+s+"^2 + "+(d+b)+s+" + "+(d*b));
+	}
+	
 	//returns whether a int a is divisible by int b
 	public static boolean isDivisibleBy(int a, int b) {
 		if (b == 0) { throw new ArithmeticException("Can't divide by 0"); }
@@ -71,8 +75,8 @@ public class Calculate {
 	
 	//returns the largest of three numbers
 	public static double max(double a, double b, double c) {
-		if (a > b && a > c) { return a; }
-		else if (b > a && b > c) { return b; }
+		if (a >= b && a >= c) { return a; }
+		else if (b >= a && b >= c) { return b; }
 		return c;
 	}
 	

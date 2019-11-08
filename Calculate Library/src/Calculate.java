@@ -52,7 +52,7 @@ public class Calculate {
 	}
 	
 	public static String foil(int a, int b, int c, int d, String s) {
-		return ((a*c)+s+"^2 + "+(d+b)+s+" + "+(d*b));
+		return ((a*c)+s+"^2 + "+((a*d)+(b*c))+s+" + "+(d*b));
 	}
 	
 	//returns whether a int a is divisible by int b
@@ -144,13 +144,14 @@ public class Calculate {
 	      i++; 
 	      x = i * i; 
 	    } 
-	    return round2(i - 1); 
+	    return round2(Math.sqrt(num)); 
 	}
 	
 	public static String quadForm(int a, int b, int c) {
 		if (discriminant(a,b,c) == -1) { return "no real roots"; }
 		if (discriminant(a,b,c) == 0 ) { return String.valueOf(round2((-b + sqrt((b*b) - 4 * a * c))/(2*a))); }
-		return String.valueOf((-b + sqrt((b*b) - (4 * a * c)))/(2*a)) + " and " + String.valueOf((-b - sqrt((b*b) - (4 * a * c)))/(2*a));
+		if ((String.valueOf((-b + sqrt((b*b) - (4 * a * c)))/(2*a)) + " and " + String.valueOf((-b - sqrt((b*b) - (4 * a * c)))/(2*a))).equals("-0.0")) { return "0.0"; }
+		else { return String.valueOf((-b + sqrt((b*b) - (4 * a * c)))/(2*a)) + " and " + String.valueOf((-b - sqrt((b*b) - (4 * a * c)))/(2*a)); }
 	}
 	
 	

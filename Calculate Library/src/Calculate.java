@@ -100,6 +100,7 @@ public class Calculate {
 	
 	public static double exponent(double a, int b) {
 		if (b < 0) { throw new ArithmeticException("Can't input a negative exponent"); }
+		if (a == 0 && b == 0) throw new ArithmeticException("Can't two zeroes!");
 		double c = 1;
 		for (int i=0;i<b;i++) {
 			c *= a;
@@ -117,7 +118,7 @@ public class Calculate {
 	}
 	
 	public static boolean isPrime(int a) {
-		for (int i=2;i<a/2;i++) {
+		for (int i=2;i<(a/2)+1;i++) {
 			if (isDivisibleBy(a,i)) {
 				return false;
 			}
@@ -151,7 +152,7 @@ public class Calculate {
 		if (discriminant(a,b,c) == -1) { return "no real roots"; }
 		if (discriminant(a,b,c) == 0 ) { return String.valueOf(round2((-b + sqrt((b*b) - 4 * a * c))/(2*a))); }
 		if ((String.valueOf((-b + sqrt((b*b) - (4 * a * c)))/(2*a)) + " and " + String.valueOf((-b - sqrt((b*b) - (4 * a * c)))/(2*a))).equals("-0.0")) { return "0.0"; }
-		else { return String.valueOf((-b + sqrt((b*b) - (4 * a * c)))/(2*a)) + " and " + String.valueOf((-b - sqrt((b*b) - (4 * a * c)))/(2*a)); }
+		else { return String.valueOf(Math.min((-b + sqrt((b*b) - (4 * a * c)))/(2*a),(-b - sqrt((b*b) - (4 * a * c)))/(2*a))) + " and " + String.valueOf(Math.max((-b - sqrt((b*b) - (4 * a * c)))/(2*a),(-b + sqrt((b*b) - (4 * a * c)))/(2*a))); }
 	}
 	
 	

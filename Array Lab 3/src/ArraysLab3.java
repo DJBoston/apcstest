@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class ArraysLab3 {
 	public static void main(String[] args) {
@@ -12,7 +13,11 @@ public class ArraysLab3 {
 		int sumOfEvens = sumEven(appendArr);
 		rotateRight(a1);
 		
-		System.out.println()
+		System.out.println(Arrays.toString(sumArr));
+		System.out.println(Arrays.toString(appendArr));
+		System.out.println(Arrays.toString(removeArr));
+		System.out.println(sumOfEvens);
+		System.out.println(Arrays.toString(a1));
 	}
 	
 	public static int[] sum(int[] arr1, int[] arr2) {

@@ -46,9 +46,11 @@ public class Main {
         n = "0";
         d = "1";
       }
-
-    String b = input.split(String.format(" \\%s",o))[1].trim();
-    //String b = input.split(" "+o,2)[1].trim();
+    
+    String b = "";
+    
+    if (o.equals("*") || o.equals("/")) b = input.split(String.format(" \\%s",o))[1].trim();
+    if (o.equals("+") || o.equals("-")) b = input.split(" "+o,2)[1].trim();
     //System.out.println(input.split(" "+o)[0]);
     //System.out.println(input.split(" "+o)[1]);
     if (b.contains("_")) {
@@ -91,19 +93,17 @@ public class Main {
       newDen = cdm;
     } 
     if (o.equals("*")) {
-        newNum = simp1 * simp2
+        newNum = simp1 * simp2;
         newDen = cdm;
     }
     if (o.equals("/")) {
-        newNum = simp1 * Integer.valueOf(d2)
-        newDen = Integer.valueOf(d) * simp2
+        newNum = simp1 * Integer.valueOf(d2);
+        newDen = Integer.valueOf(d) * simp2;
     }
     
-    newW = Math.floor(newNum/NewDen);
-    newNum = newNum % newDen;
+    return newNum + "/" + newDen;
     
     
   }
 
 }
-    

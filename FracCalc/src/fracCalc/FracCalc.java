@@ -1,7 +1,7 @@
-//package fracCalc;
+package fracCalc;
 import java.util.*;
 
-public class Main {
+public class FracCalc {
 	public static void main(String[] args) {
 	    boolean rep = true;
 	    Scanner sc = new Scanner(System.in);
@@ -14,14 +14,7 @@ public class Main {
 	    sc.close();
 	}
 	    
-	public static int gcf(int a, int b) {
-		while(a!=0 && b!=0) {
-			int c = b;
-			b = a%b;
-			a = c;
-		}
-		return a+b;
-	}
+	
 	
 	public static String produceAnswer(String input) {
 		String o = "";
@@ -47,11 +40,18 @@ public class Main {
         d = "1";
       }
     
-    String b = "";
     
-    if (o.equals("*") || o.equals("/")) b = input.split(String.format(" \\%s",o))[1].trim();
-    if (o.equals("+") || o.equals("-")) b = input.split(" "+o,2)[1].trim();
-    //System.out.println(input.split(" "+o)[0]);
+    String b = input.split(String.format(" \\%s",o))[1].trim();
+    String b2 = input.split(" "+o,2)[1].trim();
+    
+    
+    try {
+    	int zzz = Integer.valueOf(b);
+    } catch (Exception e) {
+    	if (b.contains("/") == false) b = b2;
+    }
+    
+    
     //System.out.println(input.split(" "+o)[1]);
     if (b.contains("_")) {
         
@@ -67,7 +67,7 @@ public class Main {
       n2 = "0";
       d2 = "1";
     }
-    //System.out.println(n2);
+    //System.out.println();
     
     
     int simp1 = Integer.valueOf(n) + (Integer.valueOf(w) * Integer.valueOf(d));
@@ -101,9 +101,31 @@ public class Main {
         newDen = Integer.valueOf(d) * simp2;
     }
     
-    return newNum + "/" + newDen;
+    
+    
+    double newW = Math.floor(newNum/newDen);
+    int nz = (int) newW;
+    newNum = newNum%newDen;
+    int newgcf = gcf(newNum,newDen);
+    String ws = "";
+    String as = "";
+    if (Integer.valueOf(newNum) > 0 && newW > 0) return newW + "_" + (newNum/newgcf) + "/" + (newDen/newgcf);
+    if (Integer.valueOf(newNum) > 0 && newW == 0) return (newNum/newgcf) + "/" + (newDen/newgcf);
+    if (newW > 0) return Integer.toString(nz);
+    return "0";
+    
+    
     
     
   }
+
+	private static int gcf(int a, int b) {
+		while(a!=0 && b!=0) {
+			int c = b;
+			b = a%b;
+			a = c;
+		}
+		return a+b;
+	}
 
 }

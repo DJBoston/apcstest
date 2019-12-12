@@ -18,8 +18,8 @@ public class ArrayListPracticeLab
 	 * Write a method called convertArrayToList that accepts one parameter, an array of Strings, and returns 
 	 * an ArrayList containing those Strings
 	 */
-	public static ArrayList convertArrayToList(String[] s) {
-    ArraryList<String> n = new ArrayList<String>();
+	public static ArrayList<String> convertArrayToList(String[] s) {
+    ArrayList<String> n = new ArrayList<String>();
     for (String i : s) {
       n.add(i);
     }
@@ -36,11 +36,11 @@ public class ArrayListPracticeLab
 	 * empty list, it should return 0.
 	 */
 	
-	public static int maxLength(ArrayList s) {
+	public static int maxLength(ArrayList<String> s) {
     int longest = 0;
     for (String i : s) {
-      if (i.length > longest) {
-        longest = i.length;
+      if (i.length() > longest) {
+        longest = i.length();
       }
     }
     return longest;
@@ -66,9 +66,16 @@ public class ArrayListPracticeLab
 	 *  The returned list should contain {"be", "to", "not", "or", "be", "to", "hamlet"}
 	 */
 	
-	//public static ArrayList swapPairs(ArrayList s) {
-
-  //}
+	public static ArrayList<String> swapPairs(ArrayList<String> s) {
+		ArrayList<String> n = new ArrayList<String>();
+		if(s.size() == 1) return s;
+		for (int i=0;i<s.size()-(s.size()%2);i++) {
+			if (i%2 == 0) n.add(s.get(i+1));
+			else n.add(s.get(i-1));
+		}
+		if (s.size() % 2 != 0) n.add(s.get(s.size()-1));
+		return n;
+  }
 	
 	
 	
@@ -120,8 +127,9 @@ public class ArrayListPracticeLab
 		String[] test_max_3 = {};
 		
 		//printMe( maxLength( convertArrayToList(test_max_1) ) );
-		
-		
+		System.out.println(maxLength(convertArrayToList(test_max_1)));
+		System.out.println(maxLength(convertArrayToList(test_max_2)));
+		System.out.println(maxLength(convertArrayToList(test_max_3)));
 		
 		
 		// To test your swapPairs method, convert the following to ArrayLists of Strings and 
@@ -135,6 +143,10 @@ public class ArrayListPracticeLab
 		String[] test_swap_2 = {"I", "love", "programming!"};
 		String[] test_swap_3 = {"don't move me"};
 		String[] test_swap_4 = {};
+		System.out.println(swapPairs(convertArrayToList(test_swap_1)));
+		System.out.println(swapPairs(convertArrayToList(test_swap_2)));
+		System.out.println(swapPairs(convertArrayToList(test_swap_3)));
+		System.out.println(swapPairs(convertArrayToList(test_swap_4)));
 
 		
 		
